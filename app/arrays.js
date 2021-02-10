@@ -4,7 +4,11 @@
 // output: ['is', 'a', 'split', 'sentence.', 'This']
 
 function rearranger(arr) {
+    let toMove = arr.shift();
+    arr.push(toMove);
+    return arr;
 }
+
 
 
 // ------------------------------------------
@@ -16,9 +20,18 @@ function rearranger(arr) {
 // output: 42
 
 function largestNum(arr) {
+    let output = 0
+    let newObj = {
+
+    }
+    for (let i = 0; i < arr.length; i++) {
+        if (output < arr[i]) {
+            output = arr[i];
+            console.log(output)
+        }
+    }
+    return output;
 }
-
-
 // ------------------------------------------
 
 
@@ -28,6 +41,12 @@ function largestNum(arr) {
 // output: [16, 8, 4, 28]
 
 function elemsTimesLength(arr) {
+    let output = [];
+    let counter = 0;
+    for (let i = 0; i < arr.length; i++) {
+        output.push(arr[i] * arr.length)
+    }
+    return output;
 }
 
 
@@ -62,8 +81,16 @@ let flights = [{
 
 
 function flightCost(destination, firstClass) {
-    //***hint: use the find method***
-
+    let cost = 0;
+    for (let i = 0; i < flights.length; i++) {
+        let flight = flights[i]
+        if (destination.toLowerCase() == flight.to.toLowerCase()) {
+            if (firstClass == false) {
+                return flight.prices.standard;
+            }
+            return flight.prices.firstClass
+        }
+    }
 }
 
 
@@ -84,7 +111,14 @@ let staff = [{ id: 1, name: 'Jon' }, { id: 2, name: 'Yuli' }, { id: 21, name: 'P
 { id: 881, name: 'Paul' }, { id: 0, name: 'Jon' }, { id: 999, name: 'Timma' }]
 
 function findById(id) {
-
+    for (let i = 0; i < staff.length; i++) {
+        ourStaff = staff[i];
+        console.log(ourStaff, "ourStaff")
+        if (ourStaff.id == id) {
+            return ourStaff
+        }
+    }
+    return obj = { error: "No name exists under this ID!" }
 }
 
 
@@ -111,4 +145,11 @@ let theBand = {
 }
 
 function bandMemberDetails(name) {
+    let currentMember;
+    for (let i = 0; i < theBand.members.length; i++) {
+        currentMember = theBand.members[i];
+        if (currentMember.name.includes(name)) {
+            return `${currentMember.name} is in the band and plays the ${currentMember.instrument}`
+        }
+    }
 }
